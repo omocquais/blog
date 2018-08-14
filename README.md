@@ -1,3 +1,6 @@
+Lien vers le repository Git contenant le code source du projet:
+https://github.com/omocquais/blog.git
+
 # Blog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
