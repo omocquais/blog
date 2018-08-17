@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {PostService} from '../services/post.service';
 
 @Component({
   selector: 'app-post-list-item-component',
@@ -13,7 +14,7 @@ export class PostListItemComponentComponent implements OnInit {
   @Input() index: number;
   @Input() loveIts: number;
 
-  constructor() {
+  constructor(private postService: PostService) {
   }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class PostListItemComponentComponent implements OnInit {
     console.log('dontLoveIt');
     this.loveIts = this.loveIts - 1;
     console.log('loveIts' + this.loveIts);
+    this.postService.emitPosts();
 
   }
 
@@ -31,13 +33,25 @@ export class PostListItemComponentComponent implements OnInit {
     this.loveIts = this.loveIts + 1;
     console.log('loveIts' + this.loveIts);
 
+    this.postService.emitPosts();
+
   }
 
   getColor(): string {
+    console.log('dans getColor():');
+    console.log(this.loveIts);
+
     if (this.loveIts < 0) {
       return 'list-group-item-danger';
+    } else if (this.loveIts === 0) {
+      return 'list-group-item';
     } else {
       return 'list-group-item-success';
     }
+  }
+
+  deletePost() {
+    console.log('deletePost');
+    this.postService.deletePost(this.index);
   }
 }
