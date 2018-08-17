@@ -21,26 +21,14 @@ export class PostListItemComponentComponent implements OnInit {
   }
 
   dontLoveIt() {
-    console.log('dontLoveIt');
-    this.loveIts = this.loveIts - 1;
-    console.log('loveIts' + this.loveIts);
-    this.postService.emitPosts();
-
+    this.postService.decrementLoveIt(this.index);
   }
 
   loveIt() {
-    console.log('loveIt');
-    this.loveIts = this.loveIts + 1;
-    console.log('loveIts' + this.loveIts);
-
-    this.postService.emitPosts();
-
+    this.postService.incrementLoveIt(this.index);
   }
 
   getColor(): string {
-    console.log('dans getColor():');
-    console.log(this.loveIts);
-
     if (this.loveIts < 0) {
       return 'list-group-item-danger';
     } else if (this.loveIts === 0) {
@@ -51,7 +39,6 @@ export class PostListItemComponentComponent implements OnInit {
   }
 
   deletePost() {
-    console.log('deletePost');
     this.postService.deletePost(this.index);
   }
 }
