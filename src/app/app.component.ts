@@ -2,9 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Post} from './post';
 import {Subscription} from 'rxjs';
 import {PostService} from './services/post.service';
-import {Routes} from '@angular/router';
-import {PostListComponentComponent} from './post-list-component/post-list-component.component';
-import {NewPostComponent} from './new-post/new-post.component';
 
 @Component({
   selector: 'app-root',
